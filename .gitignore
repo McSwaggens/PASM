@@ -4,6 +4,10 @@
 *.o
 *.obj
 
+# Custom
+/bin/
+.vscode
+
 # Precompiled Headers
 *.gch
 *.pch
