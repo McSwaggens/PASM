@@ -10,7 +10,7 @@ SET_INT::SET_INT (Register* targetRegister, unsigned int number)
 	this->targetRegister = targetRegister;
 	this->number = number;
 }
-d
+
 // void SET_INT::Initialize (Register* targetRegister, unsigned int number)
 // {
 // 	this->targetRegister = targetRegister;
