@@ -45,6 +45,7 @@ char* Memory::Read (unsigned long address, unsigned long length)
 	
 	Malloc allocates an unused section of bytes in memory, making sure it isn't used
 */
-void Memory::Malloc (unsigned long length)
+unsigned long Memory::Malloc (unsigned long length)
 {
+	return 0;
 }
