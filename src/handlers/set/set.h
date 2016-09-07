@@ -9,7 +9,7 @@
 class SET : public Handler
 {
 public:
-	Register* targetRegister;
+	unsigned int targetRegister;
 	// SET 0 XXX 1 2
 	//     ^
 	//     - targetRegister

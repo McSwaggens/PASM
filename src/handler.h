@@ -3,7 +3,6 @@
 #ifndef __HANDLER_H_
 #define __HANDLER_H_
 
-#include <functional>
 #include "register.h"
 
 //[Base Handler class]
