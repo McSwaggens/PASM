@@ -1,4 +1,4 @@
-#include "Memory.h"
+#include "memory.h"
 
 // Memory Constructor
 Memory::Memory (unsigned long size)
@@ -6,8 +6,29 @@ Memory::Memory (unsigned long size)
 	// Create a byte array with the given size
 	data = new char[size];
 	
+	// Initialize memoryBlockAddressStack
+	memoryBlockAddressStack = malloc (sizeof(void*) * size);
+	
 	// Set the public size
 	this->size = size;
+}
+
+// Get a free block with the minimum required size
+MemoryBlock* Memory::GetFreeBlock (unsigned short minimumSize)
+{
+	for (int i = 0; i < freeParts.size(); i++)
+	{
+		MemoryBlock* block = &freeParts[i];
+		if (block->size >= minimumSize)
+		{	// A memory block has been found with at or above the required size
+			return block;
+		}
+	}
+	
+	// Couldn't find a free memory block with the required size
+	// ERROR!
+	
+	throw MEMORY_EXCEPTION;
 }
 
 // Write data to an address

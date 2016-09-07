@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include <string>
 #include <fstream>
-#include "Engine.h"
-#include "GlobalDefines.h"
+#include "engine.h"
+#include "globaldefines.h"
 
 Engine* engine;
 int main();

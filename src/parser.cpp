@@ -1,4 +1,4 @@
-#include "Parser.h"
+#include "parser.h"
 
 std::vector<std::string> Parser::SeperateLines (std::string* code)
 {
