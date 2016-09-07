@@ -43,6 +43,10 @@ void Engine::Execute (int lines)
 	}
 	else // Memory module HAS been initialized correctly
 	{
+		for (auto handler : code)
+		{
+			handler->Execute ();
+		}
 	}
 }
 
@@ -59,7 +63,7 @@ bool Engine::CheckRAM ()
 	}
 }
 
-void Engine::Load (string code)
+void Engine::Load (std::string code)
 {
 	long codeLength = code.length();
 	
@@ -76,9 +80,11 @@ void Engine::Load (string code)
 		std::cout << "Parser::SeperateLines returned " << lines.size() << " lines" << std::endl;
 	}
 	
+	this->code.resize (lines.size());
+		
 	for (long ln = 0; ln < lines.size(); ln++)
 	{
-		string currentLine = lines[ln];
+		std::string currentLine = lines[ln];
 		std::vector<std::string> parts = Parser::SeperateSpaces (&currentLine);
 		
 		if (SHOW_DEBUG_INFORMATION) // print all string parts
@@ -89,11 +95,7 @@ void Engine::Load (string code)
 			}
 		}
 		
-		// Convert line into Handler objects
-		this->code = new Handler[lines.size()];
-		
-		//Handler* handler = new SET_INT ();
-		//handler->Execute ();
-		
+		Handler* handler = new SET_INT32 (new Register, 1);
+		this->code[0] = handler;
 	}
 }

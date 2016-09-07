@@ -1,19 +1,18 @@
 #include <iostream>
-#include <stdio.h>
 #include <string>
-#include "string.h"
 #include <vector>
+#include "string.h"
 #include "memory.h"
 #include "handler.h"
 #include "parser.h"
 #include "globaldefines.h"
 
-using namespace std;
+#include "handlers/set/INT32/int32.h"
 
 class Engine
 {
 private:
-	Handler* code;
+	std::vector<Handler*> code;
 	
 	bool CheckRAM (); // Check if the ram module is initialized
 public:
@@ -24,7 +23,7 @@ public:
 	Memory* ram;
 	
 // Member functions
-	void Load (string code);
+	void Load (std::string code);
 	void Execute (int lines);
 	void InitializeRAM (unsigned long size);
 	void InitializeRAM (Memory* memory);

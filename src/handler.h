@@ -1,7 +1,9 @@
 #pragma once
-// <iostream> for debugging code
-// Comment if NOT needed
-#include <iostream>
+
+#ifndef __HANDLER_H_
+#define __HANDLER_H_
+
+#include <functional>
 #include "register.h"
 
 //[Base Handler class]
@@ -12,22 +14,4 @@ public:
 	virtual void Execute ();
 };
 
-//[Base SET class]
-class SET : public Handler
-{
-public:
-	Register* targetRegister;
-	// SET 0 XXX 1 2
-	//     ^
-	//     - targetRegister
-};
-
-class SET_INT : public SET
-{
-private:
-	unsigned int number;
-public:
-	SET_INT (Register* targetRegister, unsigned int number);
-	// void Initialize (Register* targetRegister, unsigned int number);
-	virtual void Execute();
-};
+#endif
