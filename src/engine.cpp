@@ -50,6 +50,12 @@ void Engine::Execute (int lines)
 	}
 }
 
+
+Handler* Engine::GenerateHandler (std::vector<std::string> parts)
+{
+}
+
+
 // Check if the ram module has been initialized
 bool Engine::CheckRAM ()
 {
@@ -94,8 +100,5 @@ void Engine::Load (std::string code)
 				std::cout << parts[i] << std::endl;
 			}
 		}
-		
-		Handler* handler = new SET_INT32 (new Register, 1);
-		this->code[0] = handler;
 	}
 }

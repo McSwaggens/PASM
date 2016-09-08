@@ -7,7 +7,6 @@
 #include "parser.h"
 #include "globaldefines.h"
 
-#include "handlers/set/INT32/int32.h"
 
 class Engine
 {
@@ -15,6 +14,8 @@ private:
 	std::vector<Handler*> code;
 	
 	bool CheckRAM (); // Check if the ram module is initialized
+	
+	Handler* GenerateHandler (std::vector<std::string> parts);
 public:
 // Constructor
 	Engine();
