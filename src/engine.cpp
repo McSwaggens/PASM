@@ -43,8 +43,9 @@ void Engine::Execute (int lines)
 	}
 	else // Memory module HAS been initialized correctly
 	{
-		for (auto instruction : instructions)
+		for (int i = 0; i < lines && this->line < instructions.size (); i++, this->line++)
 		{
+			Instruction* instruction = this->instructions[this->line];
 			instruction->Execute ();
 		}
 	}

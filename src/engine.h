@@ -12,6 +12,7 @@ class Engine
 {
 private:
 	std::vector<Instruction*> instructions;
+	unsigned int line = 0;
 	
 	bool CheckRAM (); // Check if the ram module is initialized
 public:
