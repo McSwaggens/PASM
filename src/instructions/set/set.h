@@ -9,7 +9,7 @@
 class SET : public Instruction
 {
 public:
-	unsigned int targetRegister;
+	Register targetRegister;
 	// SET 0 XXX 1 2
 	//     ^
 	//     - targetRegister
