@@ -9,13 +9,13 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-#include "handlers/set/INT32/int32.h"
+#include "instructions/set/INT32/int32.h"
 
 namespace Parser
 {
 	std::vector<std::string> SeperateLines (std::string* code);
 	std::vector<std::string> SeperateSpaces (std::string* line);
 	
-	Handler* GetHandler (std::vector<std::string> parts);
+	Instruction* GetInstruction (std::vector<std::string> parts);
 	
 }

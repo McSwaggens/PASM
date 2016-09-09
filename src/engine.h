@@ -3,7 +3,7 @@
 #include <vector>
 #include "string.h"
 #include "memory.h"
-#include "handler.h"
+#include "instruction.h"
 #include "parser.h"
 #include "globaldefines.h"
 
@@ -11,11 +11,9 @@
 class Engine
 {
 private:
-	std::vector<Handler*> code;
+	std::vector<Instruction*> code;
 	
 	bool CheckRAM (); // Check if the ram module is initialized
-	
-	Handler* GenerateHandler (std::vector<std::string> parts);
 public:
 // Constructor
 	Engine();

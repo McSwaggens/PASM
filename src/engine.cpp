@@ -43,18 +43,12 @@ void Engine::Execute (int lines)
 	}
 	else // Memory module HAS been initialized correctly
 	{
-		for (auto handler : code)
+		for (auto instruction : code)
 		{
-			handler->Execute ();
+			instruction->Execute ();
 		}
 	}
 }
-
-
-Handler* Engine::GenerateHandler (std::vector<std::string> parts)
-{
-}
-
 
 // Check if the ram module has been initialized
 bool Engine::CheckRAM ()

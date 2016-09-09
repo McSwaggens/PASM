@@ -21,9 +21,10 @@ int main ()
 	
 	// Load the script into the engine
 	engine->Load(script);
-	
+
 	// Start the engine
 	Run();
+	
 }
 
 std::string LoadScript ()

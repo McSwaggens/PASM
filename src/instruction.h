@@ -7,7 +7,7 @@
 
 //[Base Handler class]
 // Includes our overridable Execute function
-class Handler
+class Instruction
 {
 public:
 	virtual void Execute ();

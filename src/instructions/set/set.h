@@ -3,10 +3,10 @@
 #ifndef __SET_H_
 #define __SET_H_
 
-#include "../../handler.h"
+#include "../../instruction.h"
 
 //[Base SET class]
-class SET : public Handler
+class SET : public Instruction
 {
 public:
 	unsigned int targetRegister;

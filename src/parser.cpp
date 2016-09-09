@@ -127,7 +127,7 @@ bool IsRegister (std::string* strn, Register* reg)
 	return true;
 }
 
-Handler* Parser::GetHandler (std::vector<std::string> parts)
+Instruction* Parser::GetInstruction (std::vector<std::string> parts)
 {
 	/*---- Stack ----*/
 	if (parts[0] == "push")
@@ -149,6 +149,18 @@ Handler* Parser::GetHandler (std::vector<std::string> parts)
 	{
 	}
 	/*---- Normal ----*/
+	else if (parts[0] == "set")
+	{
+		Register* _register;
+		if (IsRegister (&parts[1], _register))
+		{
+		}
+		else
+		{
+			printf ("SYNTAX ERROR: EXPECTED REGISTER AFTER SET INSTRUCTION!\n");
+			throw 0;
+		}
+	}
 	else if (parts[0] == "mov")
 	{
 	}
