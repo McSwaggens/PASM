@@ -21,9 +21,11 @@ int main ()
 	
 	// Load the script into the engine
 	engine->Load(script);
+	
+	engine->InitializeRAM (1000);
 
 	// Start the engine
-	Run();
+	engine->Execute (1);
 	
 }
 
@@ -32,12 +34,4 @@ std::string LoadScript ()
 	std::ifstream file(DEFAULT_SCRIPT_LOCATION);
 	std::string content((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
 	return content;
-}
-
-void Run ()
-{
-	while (true)
-	{
-		engine->Execute(1);
-	}
 }
