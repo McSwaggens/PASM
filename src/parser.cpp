@@ -96,19 +96,17 @@ bool IsHex (std::string const& str)
 	return str.find_first_not_of("0123456789abcdefABCDEF", 0) == std::string::npos;
 }
 
-bool IsRegister (std::string* strn, Register* reg)
+bool IsRegister (std::string str, Register* reg)
 {
-	const char* str = &strn->c_str()[0];
-	
 	Register _register;
 	
 	_register.isPrivate = str[0] == ':';
 	
-	char c_num[_register.isPrivate ? sizeof(str) : sizeof(str)-1];
+	char c_num[_register.isPrivate ? str.size() : str.size()-1];
 	
-	for (int i = 1; i < sizeof (str); i++)
+	for (int i = 1; i < str.size (); i++)
 	{
-		char cur_c = str[0];
+		char cur_c = str[i];
 		c_num[i-1] = cur_c;
 	}
 	
@@ -120,15 +118,31 @@ bool IsRegister (std::string* strn, Register* reg)
 	}
 	else
 	{
+		std::cout << str << " NOT HEX " << std::endl;
 		return false;
 	}
 	
-	*reg = _register;
+	reg = &_register;
 	return true;
+}
+
+Instruction* GetSetInstruction (Register* _register, std::vector<std::string> parts)
+{
+	if (parts[2] == "INT32")
+	{
+		
+		if (IsNumber (parts[3]))
+		{
+			unsigned int number = std::atoi (parts[3].c_str());
+			return new SET_INT32 (*_register, number);
+		}
+	}
+	throw 0;
 }
 
 Instruction* Parser::GetInstruction (std::vector<std::string> parts)
 {
+	
 	/*---- Stack ----*/
 	if (parts[0] == "push")
 	{
@@ -152,8 +166,9 @@ Instruction* Parser::GetInstruction (std::vector<std::string> parts)
 	else if (parts[0] == "set")
 	{
 		Register* _register;
-		if (IsRegister (&parts[1], _register))
+		if (IsRegister (parts[1], _register))
 		{
+			return GetSetInstruction (_register, parts);
 		}
 		else
 		{
