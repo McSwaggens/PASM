@@ -6,6 +6,7 @@
 #include "instruction.h"
 #include "parser.h"
 #include "globaldefines.h"
+#include "stack.h"
 
 
 class Engine
@@ -13,6 +14,8 @@ class Engine
 private:
 	std::vector<Instruction*> instructions;
 	unsigned int line = 0;
+	
+	Stack* stack = new Stack;
 	
 	bool CheckRAM (); // Check if the ram module is initialized
 public:
