@@ -19,6 +19,17 @@ private:
 	
 public:
 	
+	Stack ()
+	{
+		for (int x = 0; x < MAX_SIZE; x++)
+		{
+			for (int y = 0; y < MAX_BYTES; y++)
+			{
+				stack[x][y] = 0;
+			}
+		}
+	}
+	
 	/*---- INT ----*/
 	
 	void Push (char value)
@@ -69,12 +80,14 @@ public:
 	
 	void Add ()
 	{
+		position--;
 		long number_value_1 = *(long *)&stack[position][0];
-		long number_value_2 = *(long *)&stack[--position][0];
+		long number_value_2 = *(long *)&stack[position-1][0];
 		
 		
 		long newValue = number_value_1 + number_value_2;
 		*reinterpret_cast<long*>(stack[position]) = newValue;
+		position++;
 	}
 	
 	/*---- POP ----*/
