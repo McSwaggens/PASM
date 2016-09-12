@@ -74,7 +74,7 @@ public:
 		
 		
 		long newValue = number_value_1 + number_value_2;
-		*reinterpret_cast<long*>(stackp[position]) = newValue;
+		*reinterpret_cast<long*>(stack[position]) = newValue;
 	}
 	
 	/*---- POP ----*/
