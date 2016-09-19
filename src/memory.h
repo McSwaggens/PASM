@@ -29,7 +29,7 @@ public:
 	unsigned long	size;
 	
 // Member functions
-	void	Write	(unsigned long address, char* data);			// Write data to a given address
+	void	Write	(unsigned long address, char* data, ulong size);// Write data to a given address
 	char*	Read	(unsigned long address, unsigned long length);	// Read data from a given address and length
 	ulong	Malloc	(unsigned long length);							// Allocate data with a given length
 };

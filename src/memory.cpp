@@ -32,13 +32,10 @@ MemoryBlock* Memory::GetFreeBlock (unsigned short minimumSize)
 }
 
 // Write data to an address
-void Memory::Write (unsigned long address, char* data)
+void Memory::Write (unsigned long address, char* data, ulong size)
 {
-	// Get the size of the data we're writing with
-	unsigned int dataSize = sizeof(data);
-	
 	// Loop through the size of the data we're writing with
-	for (unsigned int offset = 0; offset < dataSize; dataSize++)
+	for (unsigned long offset = 0; offset < size; offset++)
 	{
 		// Set the data of the address + offset to the offset in the data we're wring with
 		this->data[address + offset] = data[offset];
