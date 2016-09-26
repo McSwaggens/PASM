@@ -1,11 +1,9 @@
-#pragma once
+#ifndef __MEMORY_H_
+#define __MEMORY_H_
 
 #include <algorithm>
 #include <vector>
-#include <stdlib.h>
 #include "globaldefines.h"
-#include <string>
-#include <iostream>
 
 #define DATA(v) reinterpret_cast<char*>(&v)
 #define CAST(t, v) *reinterpret_cast<t*>(v)
@@ -39,10 +37,6 @@ public:
 	char*	Read	(ADDR address, ADDR length);			// Read data from a given address and length
 	ADDR	Malloc	(ADDR size);							// Allocate data with a given length
 	void	Free	(ADDR address);
-	
-// Debug
-	void	PrintDebugInformation ();
-	void	PrintBlockInformation (MemoryBlock* memoryBlock);
 };
 
 struct MemoryBlock			// 7 Bytes total
@@ -65,8 +59,11 @@ struct MemoryBlock			// 7 Bytes total
 	}
 	
 	
-	ADDR GetNextAddress ()
+	inline ADDR GetNextAddress ()
 	{
 		return this->address + this->size;
 	}
 };
+
+
+#endif
