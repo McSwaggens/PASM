@@ -7,6 +7,9 @@
 #include <string>
 #include <iostream>
 
+#define DATA(v) reinterpret_cast<char*>(&v)
+#define CAST(t, v) *reinterpret_cast<t*>(v)
+
 typedef unsigned short ADDR;
 
 struct MemoryBlock;
