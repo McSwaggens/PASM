@@ -1,10 +1,13 @@
 #pragma once
 
+#include <algorithm>
 #include <vector>
 #include <stdlib.h>
 #include "globaldefines.h"
+#include <string>
+#include <iostream>
 
-typedef unsigned long ulong; // Made this so I can keep Malloc definition clean
+typedef unsigned short ADDR;
 
 struct MemoryBlock;
 
@@ -12,43 +15,55 @@ class Memory
 {
 private:
 // Member variables
-	void* memoryBlockAddressStack;
-	std::vector<MemoryBlock> freeParts;
-	std::vector<MemoryBlock> usedParts;
+	MemoryBlock*				memoryBlockStack;
+	std::vector<MemoryBlock*>	freeBlocks;			// Array of memory blocks that aren't being used.
+	std::vector<MemoryBlock*>	usedBlocks; 		// Array of memory blocks that are being used by one or more pointers
 	
 // Member functions
-	MemoryBlock* GetFreeBlock (unsigned short minimumSize); // Get a free block with the minimum required size
-	
+	MemoryBlock* GetFreeBlock	(unsigned short minimumSize); // Get a free block with the minimum required size
+	void	Stitch	(MemoryBlock* memoryBlock);
 	
 public:
 // Constructor
-	Memory (unsigned long size);
+	Memory	(ADDR size);
 
 // Member variables
-	char*			data;
-	unsigned long	size;
+	char*	data;
+	ADDR	size;
 	
 // Member functions
-	void	Write	(unsigned long address, char* data, ulong size);// Write data to a given address
-	char*	Read	(unsigned long address, unsigned long length);	// Read data from a given address and length
-	ulong	Malloc	(unsigned long length);							// Allocate data with a given length
+	void	Write	(ADDR address, char* data, ADDR size);	// Write data to a given address
+	char*	Read	(ADDR address, ADDR length);			// Read data from a given address and length
+	ADDR	Malloc	(ADDR size);							// Allocate data with a given length
+	void	Free	(ADDR address);
+	
+// Debug
+	void	PrintDebugInformation ();
+	void	PrintBlockInformation (MemoryBlock* memoryBlock);
 };
 
-struct MemoryBlock // 15 Bytes
+struct MemoryBlock			// 7 Bytes total
 {
-	unsigned int	backAddress;	// 4 Bytes
-	unsigned long	address;		// 8 Bytes
-	unsigned short	size;			// 2 Bytes
-	bool			used;			// 1 Byte
+	ADDR	backAddress;	// 2 Bytes
+	ADDR	address;		// 2 Bytes
+	ADDR	size;			// 2 Bytes
+	bool	used;			// 1 Byte
 	
-	MemoryBlock (unsigned long address, unsigned int size)
+	MemoryBlock ()
+	{
+	}
+	
+	MemoryBlock (ADDR address, unsigned int size)
 	{
 		this->address = address;
 		this->size = size;
+		
+		this->backAddress = 0;	// Default value
 	}
 	
-	unsigned long GetNextAddress ()
+	
+	ADDR GetNextAddress ()
 	{
-		return address + size;
+		return this->address + this->size;
 	}
 };
