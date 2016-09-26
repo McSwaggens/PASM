@@ -90,6 +90,42 @@ public:
 		position++;
 	}
 	
+	void Sub ()
+	{
+		position--;
+		long number_value_1 = *(long *)&stack[position][0];
+		long number_value_2 = *(long *)&stack[position-1][0];
+		
+		
+		long newValue = number_value_1 - number_value_2;
+		*reinterpret_cast<long*>(stack[position]) = newValue;
+		position++;
+	}
+	
+	void Mul ()
+	{
+		position--;
+		long number_value_1 = *(long *)&stack[position][0];
+		long number_value_2 = *(long *)&stack[position-1][0];
+		
+		
+		long newValue = number_value_1 / number_value_2;
+		*reinterpret_cast<long*>(stack[position]) = newValue;
+		position++;
+	}
+	
+	void Div ()
+	{
+		position--;
+		long number_value_1 = *(long *)&stack[position][0];
+		long number_value_2 = *(long *)&stack[position-1][0];
+		
+		
+		long newValue = number_value_1 / number_value_2;
+		*reinterpret_cast<long*>(stack[position]) = newValue;
+		position++;
+	}
+	
 	/*---- POP ----*/
 	
 	void Pop (Register* reg)
