@@ -153,7 +153,7 @@ ADDR Memory::Malloc (ADDR size)
 	freeBlocks.erase (std::remove(freeBlocks.begin(), freeBlocks.end(), memoryBlock));
 	usedBlocks.push_back (memoryBlock);
 	
-	return 0;
+	return memoryBlock->address;
 }
 
 
