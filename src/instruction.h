@@ -1,7 +1,5 @@
-#pragma once
-
-#ifndef __HANDLER_H_
-#define __HANDLER_H_
+#ifndef __INSTRUCTION_H_
+#define __INSTRUCTION_H_
 
 #include "register.h"
 
