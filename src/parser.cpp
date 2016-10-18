@@ -1,4 +1,5 @@
 #include "parser.h"
+#include "memory.h"
 
 std::vector<std::string> Parser::SeperateLines (std::string* code)
 {
@@ -79,9 +80,14 @@ std::vector<std::string> Parser::SeperateSpaces (std::string* line)
 	return parts;
 }
 
-bool IsNumber (std::string const& s)
+bool IsNumber (std::string const& s, unsigned int& number)
 {
-	return s.find_first_not_of("0123456789", 0) == std::string::npos;
+	if (s.find_first_not_of("0123456789", 0) == std::string::npos)
+	{
+		number = std::atoi (s.c_str());
+		return true;
+	}
+	return false;
 }
 
 bool IsHex_0x (std::string const& str)
@@ -96,9 +102,8 @@ bool IsHex (std::string const& str)
 	return str.find_first_not_of("0123456789abcdefABCDEF", 0) == std::string::npos;
 }
 
-bool IsRegister (std::string str, Register* reg)
+bool IsRegister (std::string str, Register& _register)
 {
-	Register _register;
 	
 	_register.isPrivate = str[0] == ':';
 	
@@ -122,19 +127,17 @@ bool IsRegister (std::string str, Register* reg)
 		return false;
 	}
 	
-	reg = &_register;
 	return true;
 }
 
-Instruction* GetSetInstruction (Register* _register, std::vector<std::string> parts)
+Instruction* GetSetInstruction (Register targetRegister, std::vector<std::string> parts)
 {
 	if (parts[2] == "INT32")
 	{
-		
-		if (IsNumber (parts[3]))
+		unsigned int number;
+		if (IsNumber (parts[3], number))
 		{
-			unsigned int number = std::atoi (parts[3].c_str());
-			return new SET_INT32 (*_register, number);
+			return new SET_INT32 (targetRegister, number);
 		}
 	}
 	throw 0;
@@ -165,14 +168,14 @@ Instruction* Parser::GetInstruction (std::vector<std::string> parts)
 	/*---- Normal ----*/
 	else if (parts[0] == "set")
 	{
-		Register* _register;
+		Register _register;
 		if (IsRegister (parts[1], _register))
 		{
 			return GetSetInstruction (_register, parts);
 		}
 		else
 		{
-			printf ("SYNTAX ERROR: EXPECTED REGISTER AFTER SET INSTRUCTION!\n");
+			printf ("SYNTAX ERROR: EXPECTED REGISTER AFTER SET INSTRUCTION [SET]!\n");
 			throw 0;
 		}
 	}
@@ -182,8 +185,31 @@ Instruction* Parser::GetInstruction (std::vector<std::string> parts)
 	else if (parts[0] == "call")
 	{
 	}
-	else if (parts[0] == "malloc")
+	else if (parts[0] == "malloc_v")
 	{
+	}
+	else if (parts[0] == "malloc_d")
+	{
+		Register targetRegister;
+		if (IsRegister (parts[1], targetRegister))
+		{
+			unsigned int size;
+			if (IsNumber (parts[2], size))
+			{
+				MALLOC_D* malloc_d = new MALLOC_D(targetRegister, size);
+				return malloc_d;
+			}
+			else
+			{
+				printf ("SYNTAX ERROR: EXPECTED NUMBER AFTER REGISTER [MALLOC_D]!\n");
+				throw 0;
+			}
+		}
+		else
+		{
+			printf ("SYNTAX ERROR: EXPECTED REGISTER AFTER SET INSTRUCTION [MALLOC_D]!\n");
+			throw 0;
+		}
 	}
 	else if (parts[0] == "free")
 	{
@@ -196,5 +222,3 @@ Instruction* Parser::GetInstruction (std::vector<std::string> parts)
 	}
 	throw 123;
 }
-
-

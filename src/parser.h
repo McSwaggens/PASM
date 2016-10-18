@@ -10,6 +10,7 @@
 #include <ctype.h>
 
 #include "instructions/set/INT32/int32.h"
+#include "instructions/malloc/d/malloc_d.h"
 
 namespace Parser
 {
