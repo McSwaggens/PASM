@@ -17,6 +17,6 @@ namespace Parser
 	std::vector<std::string> SeperateLines (std::string* code);
 	std::vector<std::string> SeperateSpaces (std::string* line);
 	
-	Instruction* GetInstruction (std::vector<std::string> parts);
+	Instruction GetInstruction (std::vector<std::string> parts);
 	
 }

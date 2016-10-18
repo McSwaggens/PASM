@@ -18,7 +18,7 @@ class Engine
 {
 private:
 // Member variables
-	std::vector<Instruction*> instructions;
+	std::vector<Instruction> instructions;
 	unsigned int line = 0;
 	
 	Stack*		stack			= new Stack();

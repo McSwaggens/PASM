@@ -130,20 +130,20 @@ bool IsRegister (std::string str, Register& _register)
 	return true;
 }
 
-Instruction* GetSetInstruction (Register targetRegister, std::vector<std::string> parts)
+Instruction GetSetInstruction (Register targetRegister, std::vector<std::string> parts)
 {
 	if (parts[2] == "INT32")
 	{
 		unsigned int number;
 		if (IsNumber (parts[3], number))
 		{
-			return new SET_INT32 (targetRegister, number);
+			return SET_INT32 (targetRegister, number);
 		}
 	}
 	throw 0;
 }
 
-Instruction* Parser::GetInstruction (std::vector<std::string> parts)
+Instruction Parser::GetInstruction (std::vector<std::string> parts)
 {
 	
 	/*---- Stack ----*/
@@ -196,7 +196,7 @@ Instruction* Parser::GetInstruction (std::vector<std::string> parts)
 			unsigned int size;
 			if (IsNumber (parts[2], size))
 			{
-				MALLOC_D* malloc_d = new MALLOC_D(targetRegister, size);
+				MALLOC_D malloc_d (targetRegister, size);
 				return malloc_d;
 			}
 			else

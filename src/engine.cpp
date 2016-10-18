@@ -45,8 +45,8 @@ void Engine::Execute (int lines)
 	{
 		for (int i = 0; i < lines && this->line < instructions.size (); i++, this->line++)
 		{
-			Instruction* instruction = this->instructions[this->line];
-			instruction->Execute ();
+			Instruction instruction = this->instructions[this->line];
+			instruction.Execute ();
 		}
 	}
 }
@@ -95,5 +95,7 @@ void Engine::Load (std::string instructions)
 				std::cout << parts[i] << std::endl;
 			}
 		}
+		
+		Instruction instruction = Parser::GetInstruction (parts);
 	}
 }
