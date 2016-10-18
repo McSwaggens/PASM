@@ -67,27 +67,27 @@ bool Engine::CheckRAM ()
 void Engine::Load (std::string instructions)
 {
 	long instructionsLength = instructions.length();
-	
+
 	if (SHOW_DEBUG_INFORMATION)
 	{
 		std::cout << instructionsLength << " characters being loaded into engine" << std::endl;
 	}
-	
+
 	// Get all lines out of the single string
 	std::vector<std::string> lines = Parser::SeperateLines (&instructions);
-	
+
 	if (SHOW_DEBUG_INFORMATION) // Print the amount of lines returned from the Parser
 	{
 		std::cout << "Parser::SeperateLines returned " << lines.size() << " lines" << std::endl;
 	}
-	
+
 	this->instructions.resize (lines.size());
-		
+
 	for (long ln = 0; ln < lines.size(); ln++)
 	{
 		std::string currentLine = lines[ln];
 		std::vector<std::string> parts = Parser::SeperateSpaces (&currentLine);
-		
+
 		if (SHOW_DEBUG_INFORMATION) // print all string parts
 		{
 			for (int i = 0; i < parts.size(); i++)
