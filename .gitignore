@@ -4,6 +4,12 @@
 *.o
 *.obj
 
+CMakeFiles/
+CMakeCache.txt
+Makefile
+cmake_install.cmake
+pasm
+
 # Custom
 /bin/
 .vscode
