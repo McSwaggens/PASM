@@ -1,5 +1,4 @@
-#ifndef __MALLOC_D_H_
-#define __MALLOC_D_H_
+#pragma once
 
 #include "../../../instruction.h"
 #include "../../../memory.h"
@@ -21,5 +20,3 @@ public:
 	MALLOC_D (Register targetRegister, ADDR size);
 	virtual void Execute();
 };
-
-#endif

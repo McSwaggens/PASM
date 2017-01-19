@@ -1,5 +1,4 @@
-#ifndef __INSTRUCTION_H_
-#define __INSTRUCTION_H_
+#pragma once
 
 #include "register.h"
 
@@ -10,5 +9,3 @@ class Instruction
 public:
 	virtual void Execute ();
 };
-
-#endif

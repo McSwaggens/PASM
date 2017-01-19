@@ -1,5 +1,4 @@
-#ifndef __MEMORY_H_
-#define __MEMORY_H_
+#pragma once
 
 #include <algorithm>
 #include <vector>
@@ -64,6 +63,3 @@ struct MemoryBlock			// 7 Bytes total
 		return this->address + this->size;
 	}
 };
-
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef __MALLOC_V_H_
-#define __MALLOC_V_H_
+#pragma once
 
 #include "../../../instruction.h"
 #include "../../../memory.h"
@@ -21,5 +20,3 @@ public:
 	MALLOC_V (Register targetRegister, Register valueRegister);
 	virtual void Execute();
 };
-
-#endif

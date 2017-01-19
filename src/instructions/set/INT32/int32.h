@@ -1,5 +1,4 @@
-#ifndef __INT32_H_
-#define __INT32_H_
+#pragma once
 
 #include "../set.h"
 
@@ -11,5 +10,3 @@ public:
 	SET_INT32 (Register targetRegister, unsigned int number);
 	virtual void Execute();
 };
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef __STACK_H_
-#define __STACK_H_
+#pragma once
 
 #include "register.h"
 
@@ -133,5 +132,3 @@ public:
 		//TODO: Pop the value into the Registers ram address
 	}
 };
-
-#endif

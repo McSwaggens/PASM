@@ -1,7 +1,5 @@
 #pragma once
 
-#ifndef __SET_H_
-#define __SET_H_
 
 #include "../../instruction.h"
 
@@ -14,5 +12,3 @@ public:
 	//     ^
 	//     - targetRegister
 };
-
-#endif

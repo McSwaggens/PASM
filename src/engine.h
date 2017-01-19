@@ -1,5 +1,4 @@
-#ifndef __ENGINE_H_
-#define __ENGINE_H_
+#pragma once
 
 class Engine;
 
@@ -39,5 +38,3 @@ public:
 	void	InitializeRAM (unsigned long size);
 	void	InitializeRAM (Memory* memory);
 };
-
-#endif
