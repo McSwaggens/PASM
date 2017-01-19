@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../../../instruction.h"
-#include "../../../memory.h"
+#include "../instruction.h"
+#include "../memory.h"
 
 class MALLOC_D : public Instruction
 {

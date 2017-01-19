@@ -9,8 +9,8 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-#include "instructions/set/INT32/int32.h"
-#include "instructions/malloc/d/malloc_d.h"
+#include "instructions/int32.h"
+#include "instructions/malloc_d.h"
 
 namespace Parser
 {

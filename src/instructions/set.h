@@ -1,7 +1,6 @@
 #pragma once
 
-
-#include "../../instruction.h"
+#include "../instruction.h"
 
 //[Base SET class]
 class SET : public Instruction

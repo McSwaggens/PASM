@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../set.h"
+#include "set.h"
 
 class SET_INT32 : public SET
 {
