@@ -1,7 +1,5 @@
 #pragma once
 
-class Engine;
-
 #include <iostream>
 #include <string>
 #include <vector>

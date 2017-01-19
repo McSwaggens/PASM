@@ -7,7 +7,7 @@ Engine::Engine ()
 void Engine::InitializeRAM (unsigned long size)
 {
 	// Check if the current ram module is already initialized
-	if (this->ram != NULL)
+	if (this->ram)
 	{
 		// Delete the ram module
 		delete this->ram;
@@ -20,7 +20,7 @@ void Engine::InitializeRAM (unsigned long size)
 void Engine::InitializeRAM (Memory* memory)
 {
 	// Check if the current ram module is already initialized
-	if (this->ram != NULL)
+	if (this->ram)
 	{
 		// Delete the ram module
 		delete this->ram;
@@ -54,14 +54,7 @@ void Engine::Execute (int lines)
 // Check if the ram module has been initialized
 bool Engine::CheckRAM ()
 {
-	if (this->ram == NULL) // Check if the pointer of the ram module is NULL
-	{
-		return false;
-	}
-	else
-	{
-		return true;
-	}
+	return this->ram;
 }
 
 void Engine::Load (std::string instructions)

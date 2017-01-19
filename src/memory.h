@@ -2,12 +2,10 @@
 
 #include <algorithm>
 #include <vector>
+#include <stdint.h>
 #include "globaldefines.h"
 
-#define DATA(v) reinterpret_cast<char*>(&v)
-#define CAST(t, v) *reinterpret_cast<t*>(v)
-
-typedef unsigned short ADDR;
+typedef uint16_t ADDR;
 
 struct MemoryBlock;
 

@@ -1,5 +1,8 @@
 #include "memory.h"
 
+#define DATA(v) reinterpret_cast<char*>(&v)
+#define CAST(t, v) *reinterpret_cast<t*>(v)
+
 // Memory Constructor
 Memory::Memory (ADDR size)
 {
@@ -166,4 +169,3 @@ void Memory::Free (ADDR address)
 	freeBlocks.insert (freeBlocks.begin(), memoryBlock);
 	Stitch (memoryBlock);
 }
-
