@@ -1,6 +1,8 @@
 #pragma once
 
 #include "register.h"
+#include <stdint.h>
+
 
 #define MAX_SIZE 255
 #define MAX_BYTES 8
@@ -31,28 +33,28 @@ public:
 	
 	/*---- INT ----*/
 	
-	void Push (char value)
+	void Push (uint8_t value)
 	{
 		if (!IsStackOpen()) return;
 		*reinterpret_cast<long*>(stack[position]) = (long)value;
 		position++;
 	}
 	
-	void Push (short value)
+	void Push (uint16_t value)
 	{
 		if (!IsStackOpen()) return;
 		*reinterpret_cast<long*>(stack[position]) = (long)value;
 		position++;
 	}
 	
-	void Push (int value)
+	void Push (uint32_t value)
 	{
 		if (!IsStackOpen()) return;
 		*reinterpret_cast<long*>(stack[position]) = (long)value;
 		position++;
 	}
 	
-	void Push (long value)
+	void Push (uint64_t value)
 	{
 		if (!IsStackOpen()) return;
 		*reinterpret_cast<long*>(stack[position]) = value;
@@ -80,8 +82,8 @@ public:
 	void Add ()
 	{
 		position--;
-		long number_value_1 = *(long *)&stack[position][0];
-		long number_value_2 = *(long *)&stack[position-1][0];
+		uint64_t number_value_1 = *(uint64_t *)&stack[position][0];
+		uint64_t number_value_2 = *(uint64_t *)&stack[position-1][0];
 		
 		
 		long newValue = number_value_1 + number_value_2;
@@ -92,8 +94,8 @@ public:
 	void Sub ()
 	{
 		position--;
-		long number_value_1 = *(long *)&stack[position][0];
-		long number_value_2 = *(long *)&stack[position-1][0];
+		uint64_t number_value_1 = *(uint64_t *)&stack[position][0];
+		uint64_t number_value_2 = *(uint64_t *)&stack[position-1][0];
 		
 		
 		long newValue = number_value_1 - number_value_2;
@@ -104,8 +106,8 @@ public:
 	void Mul ()
 	{
 		position--;
-		long number_value_1 = *(long *)&stack[position][0];
-		long number_value_2 = *(long *)&stack[position-1][0];
+		uint64_t number_value_1 = *(uint64_t *)&stack[position][0];
+		uint64_t number_value_2 = *(uint64_t *)&stack[position-1][0];
 		
 		
 		long newValue = number_value_1 / number_value_2;
@@ -116,8 +118,8 @@ public:
 	void Div ()
 	{
 		position--;
-		long number_value_1 = *(long *)&stack[position][0];
-		long number_value_2 = *(long *)&stack[position-1][0];
+		uint64_t number_value_1 = *(uint64_t *)&stack[position][0];
+		uint64_t number_value_2 = *(uint64_t *)&stack[position-1][0];
 		
 		
 		long newValue = number_value_1 / number_value_2;
