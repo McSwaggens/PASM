@@ -39,7 +39,7 @@ public:
 		{
 			uint64_t number = *(uint64_t*)&stack[i];
 			
-			printf ("[%i]:\t%i\n", i, number);
+			printf ("[%i]:\t%lu\n", i, number);
 		}
 	}
 	
@@ -98,7 +98,7 @@ public:
 		uint64_t number_value_2 = *(uint64_t*)&stack[position-1][0];
 		
 		
-		long newValue = number_value_1 + number_value_2;
+		uint64_t newValue = number_value_2 + number_value_1;
 		*reinterpret_cast<uint64_t*>(stack[position-1]) = newValue;
 		*reinterpret_cast<uint64_t*>(stack[position]) = 0;
 	}
@@ -110,7 +110,7 @@ public:
 		uint64_t number_value_2 = *(uint64_t*)&stack[position-1][0];
 		
 		
-		long newValue = number_value_1 - number_value_2;
+		uint64_t newValue = number_value_2 - number_value_1;
 		*reinterpret_cast<uint64_t*>(stack[position-1]) = newValue;
 		*reinterpret_cast<uint64_t*>(stack[position]) = 0;
 	}
@@ -122,7 +122,7 @@ public:
 		uint64_t number_value_2 = *(uint64_t*)&stack[position-1][0];
 		
 		
-		long newValue = number_value_1 / number_value_2;
+		uint64_t newValue = number_value_2 / number_value_1;
 		*reinterpret_cast<uint64_t*>(stack[position-1]) = newValue;
 		*reinterpret_cast<uint64_t*>(stack[position]) = 0;
 	}
@@ -134,7 +134,7 @@ public:
 		uint64_t number_value_2 = *(uint64_t*)&stack[position-1][0];
 		
 		
-		long newValue = number_value_1 / number_value_2;
+		uint64_t newValue = number_value_2 / number_value_1;
 		*reinterpret_cast<uint64_t*>(stack[position-1]) = newValue;
 		*reinterpret_cast<uint64_t*>(stack[position]) = 0;
 	}
