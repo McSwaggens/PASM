@@ -94,49 +94,49 @@ public:
 	void Add ()
 	{
 		position--;
-		uint64_t number_value_1 = *(uint64_t *)&stack[position][0];
-		uint64_t number_value_2 = *(uint64_t *)&stack[position-1][0];
+		uint64_t number_value_1 = *(uint64_t*)&stack[position][0];
+		uint64_t number_value_2 = *(uint64_t*)&stack[position-1][0];
 		
 		
 		long newValue = number_value_1 + number_value_2;
-		*reinterpret_cast<long*>(stack[position]) = newValue;
-		position++;
+		*reinterpret_cast<uint64_t*>(stack[position-1]) = newValue;
+		*reinterpret_cast<uint64_t*>(stack[position]) = 0;
 	}
 	
 	void Sub ()
 	{
 		position--;
-		uint64_t number_value_1 = *(uint64_t *)&stack[position][0];
-		uint64_t number_value_2 = *(uint64_t *)&stack[position-1][0];
+		uint64_t number_value_1 = *(uint64_t*)&stack[position][0];
+		uint64_t number_value_2 = *(uint64_t*)&stack[position-1][0];
 		
 		
 		long newValue = number_value_1 - number_value_2;
-		*reinterpret_cast<long*>(stack[position]) = newValue;
-		position++;
+		*reinterpret_cast<uint64_t*>(stack[position-1]) = newValue;
+		*reinterpret_cast<uint64_t*>(stack[position]) = 0;
 	}
 	
 	void Mul ()
 	{
 		position--;
-		uint64_t number_value_1 = *(uint64_t *)&stack[position][0];
-		uint64_t number_value_2 = *(uint64_t *)&stack[position-1][0];
+		uint64_t number_value_1 = *(uint64_t*)&stack[position][0];
+		uint64_t number_value_2 = *(uint64_t*)&stack[position-1][0];
 		
 		
 		long newValue = number_value_1 / number_value_2;
-		*reinterpret_cast<long*>(stack[position]) = newValue;
-		position++;
+		*reinterpret_cast<uint64_t*>(stack[position-1]) = newValue;
+		*reinterpret_cast<uint64_t*>(stack[position]) = 0;
 	}
 	
 	void Div ()
 	{
 		position--;
-		uint64_t number_value_1 = *(uint64_t *)&stack[position][0];
-		uint64_t number_value_2 = *(uint64_t *)&stack[position-1][0];
+		uint64_t number_value_1 = *(uint64_t*)&stack[position][0];
+		uint64_t number_value_2 = *(uint64_t*)&stack[position-1][0];
 		
 		
 		long newValue = number_value_1 / number_value_2;
-		*reinterpret_cast<long*>(stack[position]) = newValue;
-		position++;
+		*reinterpret_cast<uint64_t*>(stack[position-1]) = newValue;
+		*reinterpret_cast<uint64_t*>(stack[position]) = 0;
 	}
 	
 	/*---- POP ----*/
