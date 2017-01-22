@@ -27,6 +27,8 @@ int main ()
 	// Start the engine
 	engine->Execute (2);
 	
+	engine->stack->Print(10);
+	
 }
 
 std::string LoadScript ()

@@ -2,6 +2,7 @@
 
 #include "register.h"
 #include <stdint.h>
+#include <stdio.h>
 
 
 #define MAX_SIZE 255
@@ -31,33 +32,44 @@ public:
 		}
 	}
 	
+	void Print (uint8_t size = MAX_SIZE)
+	{
+		printf("stack pos: %i\n", position);
+		for (uint8_t i = 0; i < size; i++)
+		{
+			uint64_t number = *(uint64_t*)&stack[i];
+			
+			printf ("[%i]:\t%i\n", i, number);
+		}
+	}
+	
 	/*---- INT ----*/
 	
 	void Push (uint8_t value)
 	{
 		if (!IsStackOpen()) return;
-		*reinterpret_cast<long*>(stack[position]) = (long)value;
+		*reinterpret_cast<uint64_t*>(stack[position]) = (uint64_t)value;
 		position++;
 	}
 	
 	void Push (uint16_t value)
 	{
 		if (!IsStackOpen()) return;
-		*reinterpret_cast<long*>(stack[position]) = (long)value;
+		*reinterpret_cast<uint64_t*>(stack[position]) = (uint64_t)value;
 		position++;
 	}
 	
 	void Push (uint32_t value)
 	{
 		if (!IsStackOpen()) return;
-		*reinterpret_cast<long*>(stack[position]) = (long)value;
+		*reinterpret_cast<uint64_t*>(stack[position]) = (uint64_t)value;
 		position++;
 	}
 	
 	void Push (uint64_t value)
 	{
 		if (!IsStackOpen()) return;
-		*reinterpret_cast<long*>(stack[position]) = value;
+		*reinterpret_cast<uint64_t*>(stack[position]) = value;
 		position++;
 	}
 	
