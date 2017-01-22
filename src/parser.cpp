@@ -226,5 +226,5 @@ Instruction* Parser::GetInstruction (std::vector<std::string> parts)
 	else if (parts[0] == "copy")
 	{
 	}
-	printf("Unknown instruction: %s\n", parts[0]);
+	printf("Unknown instruction: %s\n", parts[0].c_str());
 }
