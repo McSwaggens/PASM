@@ -4,7 +4,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
-class NEG : public Instruction
+class SUB : public Instruction
 {
 public:
 	virtual void Execute();

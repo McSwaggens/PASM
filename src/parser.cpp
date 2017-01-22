@@ -164,10 +164,10 @@ Instruction* Parser::GetInstruction (std::vector<std::string> parts)
 		ADD* add = new ADD;
 		return add;
 	}
-	else if (parts[0] == "neg")
+	else if (parts[0] == "sub")
 	{
-		NEG* neg = new NEG;
-		return neg;
+		SUB* sub = new SUB;
+		return sub;
 	}
 	else if (parts[0] == "mul")
 	{

@@ -1,7 +1,7 @@
-#include "neg.h"
+#include "sub.h"
 #include "../engine.h"
 
-void NEG::Execute ()
+void SUB::Execute ()
 {
 	engine->stack->Sub ();
 }
