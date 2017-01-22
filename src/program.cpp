@@ -25,7 +25,7 @@ int main ()
 	engine->InitializeRAM (1000);
 
 	// Start the engine
-	engine->Execute (2);
+	engine->Execute (100);
 	
 	engine->stack->Print(10);
 	
