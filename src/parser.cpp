@@ -174,6 +174,8 @@ Instruction* Parser::GetInstruction (std::vector<std::string> parts)
 	}
 	else if (parts[0] == "div")
 	{
+		DIV* div = new DIV;
+		return div;
 	}
 	/*---- Normal ----*/
 	else if (parts[0] == "set")
