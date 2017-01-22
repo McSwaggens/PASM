@@ -122,7 +122,7 @@ public:
 		uint64_t number_value_2 = *(uint64_t*)&stack[position-1][0];
 		
 		
-		uint64_t newValue = number_value_2 / number_value_1;
+		uint64_t newValue = number_value_2 * number_value_1;
 		*reinterpret_cast<uint64_t*>(stack[position-1]) = newValue;
 		*reinterpret_cast<uint64_t*>(stack[position]) = 0;
 	}
