@@ -161,6 +161,8 @@ Instruction* Parser::GetInstruction (std::vector<std::string> parts)
 	}
 	else if (parts[0] == "add")
 	{
+		ADD* add = new ADD;
+		return add;
 	}
 	else if (parts[0] == "neg")
 	{

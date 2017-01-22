@@ -12,6 +12,7 @@
 #include "instructions/int32.h"
 #include "instructions/malloc_d.h"
 #include "instructions/push.h"
+#include "instructions/add.h"
 
 namespace Parser
 {
