@@ -105,9 +105,9 @@ bool IsHex (std::string const& str)
 bool IsRegister (std::string str, Register& _register)
 {
 	
-	_register.isPrivate = str[0] == ':';
+	_register.is_private = str[0] == ':';
 	
-	char c_num[_register.isPrivate ? str.size() : str.size()-1];
+	char c_num[_register.is_private ? str.size() : str.size()-1];
 	
 	for (int i = 1; i < str.size (); i++)
 	{
