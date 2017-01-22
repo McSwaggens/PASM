@@ -11,15 +11,16 @@
 
 #define MAX_REGISTER_STACK_SIZE 255
 
+class Engine;
+
+extern Engine* engine;
+
 class Engine
 {
 private:
 // Member variables
-	std::vector<Instruction> instructions;
+	std::vector<Instruction*> instructions;
 	unsigned int line = 0;
-	
-	Stack*		stack			= new Stack();
-	ADDR*		registerStack	= new ADDR[MAX_REGISTER_STACK_SIZE];
 
 // Member functions
 	bool	CheckRAM (); // Check if the ram module is initialized
@@ -28,7 +29,9 @@ public:
 	Engine ();
 	
 // Member variables
-	Memory*	ram;
+	Memory*		ram;
+	Stack*		stack			= new Stack();
+	ADDR*		registerStack	= new ADDR[MAX_REGISTER_STACK_SIZE];
 	
 // Member functions
 	void	Load (std::string code);

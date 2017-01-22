@@ -2,6 +2,7 @@
 
 Engine::Engine ()
 {
+	engine = this;
 }
 
 void Engine::InitializeRAM (unsigned long size)
@@ -45,10 +46,12 @@ void Engine::Execute (int lines)
 	{
 		for (int i = 0; i < lines && this->line < instructions.size (); i++, this->line++)
 		{
-			Instruction instruction = this->instructions[this->line];
-			instruction.Execute ();
+			Instruction* instruction = this->instructions[this->line];
+			instruction->Execute ();
 		}
 	}
+	
+	
 }
 
 // Check if the ram module has been initialized
@@ -89,6 +92,7 @@ void Engine::Load (std::string instructions)
 			}
 		}
 		
-		Instruction instruction = Parser::GetInstruction (parts);
+		Instruction* instruction = Parser::GetInstruction (parts);
+		this->instructions[ln] = instruction;
 	}
 }
