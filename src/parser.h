@@ -13,6 +13,7 @@
 #include "instructions/malloc_d.h"
 #include "instructions/push.h"
 #include "instructions/add.h"
+#include "instructions/neg.h"
 
 namespace Parser
 {

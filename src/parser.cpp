@@ -166,6 +166,8 @@ Instruction* Parser::GetInstruction (std::vector<std::string> parts)
 	}
 	else if (parts[0] == "neg")
 	{
+		NEG* neg = new NEG;
+		return neg;
 	}
 	else if (parts[0] == "mul")
 	{
