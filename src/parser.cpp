@@ -39,6 +39,8 @@ std::vector<std::string> Parser::SeperateLines (std::string* code)
 			currentLine += c;
 		}
 	}
+	if (currentLine != "")
+		lines.push_back(currentLine);
 	
 	return lines;
 }
