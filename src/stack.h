@@ -89,7 +89,7 @@ public:
 		position++;
 	}
 	
-	/*----  Mathamatics ----*/
+	/*----  Mathematics ----*/
 	
 	void Add ()
 	{
