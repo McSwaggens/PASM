@@ -171,6 +171,8 @@ Instruction* Parser::GetInstruction (std::vector<std::string> parts)
 	}
 	else if (parts[0] == "mul")
 	{
+		MUL* mul = new MUL;
+		return mul;
 	}
 	else if (parts[0] == "div")
 	{

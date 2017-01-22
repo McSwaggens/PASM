@@ -15,6 +15,7 @@
 #include "instructions/add.h"
 #include "instructions/neg.h"
 #include "instructions/div.h"
+#include "instructions/mul.h"
 
 namespace Parser
 {
