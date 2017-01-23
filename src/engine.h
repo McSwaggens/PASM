@@ -29,7 +29,7 @@ public:
 	Engine ();
 	
 // Member variables
-	Memory*		ram;
+	Memory*		memory;
 	Stack*		stack			= new Stack();
 	ADDR*		registerStack	= new ADDR[MAX_REGISTER_STACK_SIZE];
 	

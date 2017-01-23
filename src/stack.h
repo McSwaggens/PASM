@@ -8,7 +8,7 @@
 #define MAX_SIZE 255
 #define MAX_BYTES 8
 
-struct Stack
+class Stack
 {
 private:
 	char stack[MAX_SIZE][MAX_BYTES];
@@ -21,16 +21,7 @@ private:
 	
 public:
 	
-	Stack ()
-	{
-		for (int x = 0; x < MAX_SIZE; x++)
-		{
-			for (int y = 0; y < MAX_BYTES; y++)
-			{
-				stack[x][y] = 0;
-			}
-		}
-	}
+	Stack ();
 	
 	void Print (uint8_t size = MAX_SIZE)
 	{
@@ -141,8 +132,5 @@ public:
 	
 	/*---- POP ----*/
 	
-	void Pop (Register* reg)
-	{
-		//TODO: Pop the value into the Registers ram address
-	}
+	void Pop (Register reg);
 };

@@ -160,6 +160,16 @@ Instruction* Parser::GetInstruction (std::vector<std::string> parts)
 	}
 	else if (parts[0] == "pop")
 	{
+		Register _register;
+		if (IsRegister (parts[1], _register))
+		{
+			POP* pop = new POP(_register);
+			return pop;
+		}
+		else
+		{
+			printf("[ERROR]: expected register as second parameter. [pop]");
+		}
 	}
 	else if (parts[0] == "add")
 	{

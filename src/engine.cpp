@@ -8,27 +8,27 @@ Engine::Engine ()
 void Engine::InitializeRAM (unsigned long size)
 {
 	// Check if the current ram module is already initialized
-	if (this->ram)
+	if (this->memory)
 	{
 		// Delete the ram module
-		delete this->ram;
+		delete this->memory;
 	}
 	
 	// Set the new ram module with a given size
-	this->ram = new Memory (size);
+	this->memory = new Memory (size);
 }
 
 void Engine::InitializeRAM (Memory* memory)
 {
 	// Check if the current ram module is already initialized
-	if (this->ram)
+	if (this->memory)
 	{
 		// Delete the ram module
-		delete this->ram;
+		delete this->memory;
 	}
 	
 	// Set the ram module to already existing module
-	this->ram = memory;
+	this->memory = memory;
 }
 
 void Engine::Execute (int lines)
@@ -57,7 +57,7 @@ void Engine::Execute (int lines)
 // Check if the ram module has been initialized
 bool Engine::CheckRAM ()
 {
-	return this->ram;
+	return this->memory;
 }
 
 void Engine::Load (std::string instructions)
