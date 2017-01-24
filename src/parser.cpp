@@ -106,16 +106,9 @@ bool IsHex (std::string const& str)
 
 bool IsRegister (std::string str, Register& _register)
 {
-	
 	_register.is_private = str[0] == ':';
 	
-	char c_num[_register.is_private ? str.size() : str.size()-1];
-	
-	for (int i = 1; i < str.size (); i++)
-	{
-		char cur_c = str[i];
-		c_num[i-1] = cur_c;
-	}
+	const char* c_num = _register.is_private ? &str[1] : str.c_str();
 	
 	if (IsHex (c_num))
 	{
