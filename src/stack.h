@@ -14,121 +14,32 @@ private:
 	char stack[MAX_SIZE][MAX_BYTES];
 	char position;
 	
-	bool IsStackOpen ()
-	{
-		return position != MAX_SIZE;
-	}
+	bool IsStackOpen ();
 	
 public:
 	
 	Stack ();
 	
-	void Print (uint8_t size = MAX_SIZE)
-	{
-		printf("stack pos: %i\n", position);
-		for (uint8_t i = 0; i < size; i++)
-		{
-			uint64_t number = *(uint64_t*)&stack[i];
-			
-			printf ("[%i]:\t%lu\n", i, number);
-		}
-	}
+	void Print (uint8_t size = MAX_SIZE);
 	
 	/*---- INT ----*/
 	
-	void Push (uint8_t value)
-	{
-		if (!IsStackOpen()) return;
-		*reinterpret_cast<uint64_t*>(stack[position]) = (uint64_t)value;
-		position++;
-	}
-	
-	void Push (uint16_t value)
-	{
-		if (!IsStackOpen()) return;
-		*reinterpret_cast<uint64_t*>(stack[position]) = (uint64_t)value;
-		position++;
-	}
-	
-	void Push (uint32_t value)
-	{
-		if (!IsStackOpen()) return;
-		*reinterpret_cast<uint64_t*>(stack[position]) = (uint64_t)value;
-		position++;
-	}
-	
-	void Push (uint64_t value)
-	{
-		if (!IsStackOpen()) return;
-		*reinterpret_cast<uint64_t*>(stack[position]) = value;
-		position++;
-	}
+	void Push (uint8_t value);
+	void Push (uint16_t value);
+	void Push (uint32_t value);
+	void Push (uint64_t value);
 	
 	/*---- FLOAT ----*/
 	
-	void Push (float value)
-	{
-		if (!IsStackOpen()) return;
-		*reinterpret_cast<long*>(stack[position]) = (double)value;
-		position++;
-	}
-	
-	void Push (double value)
-	{
-		if (!IsStackOpen()) return;
-		*reinterpret_cast<long*>(stack[position]) = value;
-		position++;
-	}
+	void Push (float value);
+	void Push (double value);
 	
 	/*----  Mathematics ----*/
 	
-	void Add ()
-	{
-		position--;
-		uint64_t number_value_1 = *(uint64_t*)&stack[position][0];
-		uint64_t number_value_2 = *(uint64_t*)&stack[position-1][0];
-		
-		
-		uint64_t newValue = number_value_2 + number_value_1;
-		*reinterpret_cast<uint64_t*>(stack[position-1]) = newValue;
-		*reinterpret_cast<uint64_t*>(stack[position]) = 0;
-	}
-	
-	void Sub ()
-	{
-		position--;
-		uint64_t number_value_1 = *(uint64_t*)&stack[position][0];
-		uint64_t number_value_2 = *(uint64_t*)&stack[position-1][0];
-		
-		
-		uint64_t newValue = number_value_2 - number_value_1;
-		*reinterpret_cast<uint64_t*>(stack[position-1]) = newValue;
-		*reinterpret_cast<uint64_t*>(stack[position]) = 0;
-	}
-	
-	void Mul ()
-	{
-		position--;
-		uint64_t number_value_1 = *(uint64_t*)&stack[position][0];
-		uint64_t number_value_2 = *(uint64_t*)&stack[position-1][0];
-		
-		
-		uint64_t newValue = number_value_2 * number_value_1;
-		*reinterpret_cast<uint64_t*>(stack[position-1]) = newValue;
-		*reinterpret_cast<uint64_t*>(stack[position]) = 0;
-	}
-	
-	void Div ()
-	{
-		position--;
-		uint64_t number_value_1 = *(uint64_t*)&stack[position][0];
-		uint64_t number_value_2 = *(uint64_t*)&stack[position-1][0];
-		
-		
-		uint64_t newValue = number_value_2 / number_value_1;
-		*reinterpret_cast<uint64_t*>(stack[position-1]) = newValue;
-		*reinterpret_cast<uint64_t*>(stack[position]) = 0;
-	}
+	void Add ();
+	void Sub ();
+	void Mul ();
+	void Div ();
 	
 	/*---- POP ----*/
 	
