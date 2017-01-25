@@ -2,19 +2,17 @@
 
 int main ()
 {
-	if (SHOW_DEBUG_INFORMATION)
-	{
+#if SHOW_DEBUG_INFORMATION
 		std::cout << "Script location: " << DEFAULT_SCRIPT_LOCATION << std::endl;
-	}
+#endif
 	
 	std::string script = LoadScript ();
 	
-	if (SHOW_DEBUG_INFORMATION)
-	{
+#if SHOW_DEBUG_INFORMATION
 		std::cout << "-----[Script]-----" << std::endl;
 		std::printf(script.c_str());
 		std::cout << "-----[Script]-----" << std::endl;
-	}
+#endif
 	
 	// Create an instance of the engine
 	engine = new Engine();
