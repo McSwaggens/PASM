@@ -21,6 +21,7 @@ public:
 	Stack ();
 	
 	void Print (uint8_t size = MAX_SIZE);
+	void PrintFl (uint8_t size = MAX_SIZE);
 	
 	/*---- INT ----*/
 	
@@ -29,6 +30,8 @@ public:
 	void Push (uint32_t value);
 	void Push (uint64_t value);
 	
+	void Push (int64_t value);
+	
 	/*---- FLOAT ----*/
 	
 	void Push (float value);
@@ -36,10 +39,25 @@ public:
 	
 	/*----  Mathematics ----*/
 	
+	// Default unsigned
 	void Add ();
 	void Sub ();
 	void Mul ();
 	void Div ();
+	
+	
+	// Signed
+	void Add_i ();
+	void Sub_i ();
+	void Mul_i ();
+	void Div_i ();
+	
+	
+	// floating point
+	void Add_f ();
+	void Sub_f ();
+	void Mul_f ();
+	void Div_f ();
 	
 	/*---- POP ----*/
 	

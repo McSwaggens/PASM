@@ -25,7 +25,7 @@ int main ()
 	// Start the engine
 	engine->Execute (100);
 	
-	engine->stack->Print(10);
+	engine->stack->PrintFl(10);
 	
 }
 

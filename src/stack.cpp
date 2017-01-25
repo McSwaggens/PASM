@@ -29,6 +29,17 @@ void Stack::Print (uint8_t size)
 	}
 }
 
+void Stack::PrintFl (uint8_t size)
+{
+	printf("stack pos: %i\n", position);
+	for (uint8_t i = 0; i < size; i++)
+	{
+		double number = *(double*)&stack[i];
+		
+		printf ("[%i]:\t%f\n", i, number);
+	}
+}
+
 /*---- INT ----*/
 
 void Stack::Push (uint8_t value)
@@ -59,19 +70,26 @@ void Stack::Push (uint64_t value)
 	position++;
 }
 
+void Stack::Push (int64_t value)
+{
+	if (!IsStackOpen()) return;
+	*reinterpret_cast<int64_t*>(stack[position]) = value;
+	position++;
+}
+
 /*---- FLOAT ----*/
 
 void Stack::Push (float value)
 {
 	if (!IsStackOpen()) return;
-	*reinterpret_cast<long*>(stack[position]) = (double)value;
+	*reinterpret_cast<double*>(stack[position]) = (double)value;
 	position++;
 }
 
 void Stack::Push (double value)
 {
 	if (!IsStackOpen()) return;
-	*reinterpret_cast<long*>(stack[position]) = value;
+	*reinterpret_cast<double*>(stack[position]) = value;
 	position++;
 }
 
@@ -123,6 +141,107 @@ void Stack::Div ()
 	uint64_t newValue = number_value_2 / number_value_1;
 	*reinterpret_cast<uint64_t*>(stack[position-1]) = newValue;
 	*reinterpret_cast<uint64_t*>(stack[position]) = 0;
+}
+
+
+
+void Stack::Add_i ()
+{
+	position--;
+	int64_t number_value_1 = *(int64_t*)&stack[position][0];
+	int64_t number_value_2 = *(int64_t*)&stack[position-1][0];
+	
+	
+	int64_t newValue = number_value_2 + number_value_1;
+	*reinterpret_cast<int64_t*>(stack[position-1]) = newValue;
+	*reinterpret_cast<int64_t*>(stack[position]) = 0;
+}
+
+void Stack::Sub_i ()
+{
+	position--;
+	int64_t number_value_1 = *(int64_t*)&stack[position][0];
+	int64_t number_value_2 = *(int64_t*)&stack[position-1][0];
+	
+	
+	int64_t newValue = number_value_2 - number_value_1;
+	*reinterpret_cast<int64_t*>(stack[position-1]) = newValue;
+	*reinterpret_cast<int64_t*>(stack[position]) = 0;
+}
+
+void Stack::Mul_i ()
+{
+	position--;
+	int64_t number_value_1 = *(int64_t*)&stack[position][0];
+	int64_t number_value_2 = *(int64_t*)&stack[position-1][0];
+	
+	
+	int64_t newValue = number_value_2 * number_value_1;
+	*reinterpret_cast<int64_t*>(stack[position-1]) = newValue;
+	*reinterpret_cast<int64_t*>(stack[position]) = 0;
+}
+
+void Stack::Div_i ()
+{
+	position--;
+	int64_t number_value_1 = *(int64_t*)&stack[position][0];
+	int64_t number_value_2 = *(int64_t*)&stack[position-1][0];
+	
+	
+	int64_t newValue = number_value_2 / number_value_1;
+	*reinterpret_cast<int64_t*>(stack[position-1]) = newValue;
+	*reinterpret_cast<int64_t*>(stack[position]) = 0;
+}
+
+
+
+
+void Stack::Add_f ()
+{
+	position--;
+	double number_value_1 = *(double*)&stack[position][0];
+	double number_value_2 = *(double*)&stack[position-1][0];
+	
+	
+	double newValue = number_value_2 + number_value_1;
+	*reinterpret_cast<double*>(stack[position-1]) = newValue;
+	*reinterpret_cast<double*>(stack[position]) = 0;
+}
+
+void Stack::Sub_f ()
+{
+	position--;
+	double number_value_1 = *(double*)&stack[position][0];
+	double number_value_2 = *(double*)&stack[position-1][0];
+	
+	
+	double newValue = number_value_2 - number_value_1;
+	*reinterpret_cast<double*>(stack[position-1]) = newValue;
+	*reinterpret_cast<double*>(stack[position]) = 0;
+}
+
+void Stack::Mul_f ()
+{
+	position--;
+	double number_value_1 = *(double*)&stack[position][0];
+	double number_value_2 = *(double*)&stack[position-1][0];
+	
+	
+	double newValue = number_value_2 * number_value_1;
+	*reinterpret_cast<double*>(stack[position-1]) = newValue;
+	*reinterpret_cast<double*>(stack[position]) = 0;
+}
+
+void Stack::Div_f ()
+{
+	position--;
+	double number_value_1 = *(double*)&stack[position][0];
+	double number_value_2 = *(double*)&stack[position-1][0];
+	
+	
+	double newValue = number_value_2 / number_value_1;
+	*reinterpret_cast<double*>(stack[position-1]) = newValue;
+	*reinterpret_cast<double*>(stack[position]) = 0;
 }
 
 void Stack::Pop (Register reg)

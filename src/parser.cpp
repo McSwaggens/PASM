@@ -92,6 +92,16 @@ bool IsNumber (std::string const& s, uint64_t& number)
 	return false;
 }
 
+bool IsNumberFloat (std::string const& s, double& number)
+{
+	if (s.find_first_not_of("0123456789.", 0) == std::string::npos)
+	{
+		number = std::stof(s.c_str());
+		return true;
+	}
+	return false;
+}
+
 bool IsHex_0x (std::string const& str)
 {
 	return str.compare(0, 2, "0x") == 0
@@ -151,6 +161,24 @@ Instruction* Parser::GetInstruction (std::vector<std::string> parts)
 			return push;
 		}
 	}
+	if (parts[0] == "pushi")
+	{
+		uint64_t number;
+		if (IsNumber (parts[1], number))
+		{
+			PUSH* push = new PUSH(number);
+			return push;
+		}
+	}
+	if (parts[0] == "pushf")
+	{
+		double number;
+		if (IsNumberFloat (parts[1], number))
+		{
+			PUSHF* push = new PUSHF(number);
+			return push;
+		}
+	}
 	else if (parts[0] == "pop")
 	{
 		Register _register;
@@ -184,8 +212,48 @@ Instruction* Parser::GetInstruction (std::vector<std::string> parts)
 		DIV* div = new DIV;
 		return div;
 	}
+	else if (parts[0] == "addi")
+	{
+		ADDI* add = new ADDI;
+		return add;
+	}
+	else if (parts[0] == "subi")
+	{
+		SUBI* sub = new SUBI;
+		return sub;
+	}
+	else if (parts[0] == "muli")
+	{
+		MULI* mul = new MULI;
+		return mul;
+	}
+	else if (parts[0] == "divi")
+	{
+		DIVI* div = new DIVI;
+		return div;
+	}
+	else if (parts[0] == "addf")
+	{
+		ADDF* add = new ADDF;
+		return add;
+	}
+	else if (parts[0] == "subf")
+	{
+		SUBF* sub = new SUBF;
+		return sub;
+	}
+	else if (parts[0] == "mulf")
+	{
+		MULF* mul = new MULF;
+		return mul;
+	}
+	else if (parts[0] == "divf")
+	{
+		DIVF* div = new DIVF;
+		return div;
+	}
 	/*---- Normal ----*/
-	else if (parts[0] == "set")
+	else if (parts[0] == "setf")
 	{
 		Register _register;
 		if (IsRegister (parts[1], _register))

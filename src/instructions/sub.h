@@ -9,3 +9,15 @@ class SUB : public Instruction
 public:
 	virtual void Execute();
 };
+
+class SUBI : public Instruction
+{
+public:
+	virtual void Execute();
+};
+
+class SUBF : public Instruction
+{
+public:
+	virtual void Execute();
+};

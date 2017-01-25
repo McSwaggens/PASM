@@ -9,3 +9,15 @@ class DIV : public Instruction
 public:
 	virtual void Execute();
 };
+
+class DIVI : public Instruction
+{
+public:
+	virtual void Execute();
+};
+
+class DIVF : public Instruction
+{
+public:
+	virtual void Execute();
+};
