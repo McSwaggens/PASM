@@ -38,4 +38,5 @@ public:
 	void	Execute (int lines);
 	void	InitializeRAM (unsigned long size);
 	void	InitializeRAM (Memory* memory);
+	size_t	GetInstructionsSize ();
 };

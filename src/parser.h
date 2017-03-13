@@ -17,6 +17,7 @@
 #include "instructions/div.h"
 #include "instructions/mul.h"
 #include "instructions/pop.h"
+#include "instructions/pt.h"
 
 namespace Parser
 {

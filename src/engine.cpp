@@ -93,3 +93,8 @@ void Engine::Load (std::string instructions)
 		this->instructions[ln] = instruction;
 	}
 }
+
+size_t Engine::GetInstructionsSize ()
+{
+	return instructions.size ();
+}

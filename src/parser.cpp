@@ -102,11 +102,29 @@ bool IsNumberFloat (std::string const& s, double& number)
 	return false;
 }
 
-bool IsHex_0x (std::string const& str)
+bool IsHex_0x (std::string const& str, uint64_t& number)
 {
-	return str.compare(0, 2, "0x") == 0
+	if (str.compare(0, 2, "0x") == 0
 		&& str.size() > 2
-		&& str.find_first_not_of("0123456789abcdefABCDEF", 2) == std::string::npos;
+		&& str.find_first_not_of("0123456789abcdefABCDEF", 2) == std::string::npos)
+	{
+		number = strtol(str.c_str(), nullptr, 16);
+		
+		return true;
+	}
+	
+	return false;
+}
+
+bool IsHex (std::string const& str, uint64_t& number)
+{
+	if (str.find_first_not_of("0123456789abcdefABCDEF", 0) == std::string::npos)
+	{
+		number = strtol(str.c_str(), nullptr, 16);
+		return true;
+	}
+	
+	return false;
 }
 
 bool IsHex (std::string const& str)
@@ -266,6 +284,20 @@ Instruction* Parser::GetInstruction (std::vector<std::string> parts)
 			throw 0;
 		}
 	}
+	else if (parts[0] == "pt")
+	{
+		uint64_t id;
+		if (IsHex(parts[1], id))
+		{
+			PT* pt = new PT (id);
+			return pt;
+		}
+		else
+		{
+			printf ("SYNTAX ERROR: EXPECTED HEX NUMBER AFTER PT INSTRUCTION [PT]!\n");
+			throw 0;
+		}
+	}
 	else if (parts[0] == "mov")
 	{
 	}
@@ -308,4 +340,6 @@ Instruction* Parser::GetInstruction (std::vector<std::string> parts)
 	{
 	}
 	printf("Unknown instruction: %s\n", parts[0].c_str());
+	
+	return nullptr;
 }
