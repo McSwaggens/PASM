@@ -22,10 +22,10 @@ uint32_t GetPoint (uint32_t _id)
 
 //
 
-PT::PT (uint32_t _id)
+PT::PT (uint32_t _id, unsigned int current_line)
 {
 	this->id = _id;
-	points.push_back (PointPair (engine->GetInstructionsSize()+1, _id));
+	points.push_back (PointPair (current_line, _id));
 }
 
 void PT::Execute ()
