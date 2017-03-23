@@ -4,6 +4,8 @@
 #include <stdint.h>
 #include <stdio.h>
 
+void StackCheck ();
+
 class PUSH : public Instruction
 {
 private:

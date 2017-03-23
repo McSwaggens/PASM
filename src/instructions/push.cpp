@@ -1,6 +1,14 @@
 #include "push.h"
 #include "../engine.h"
 
+void StackCheck ()
+{
+	if (engine->stack->GetPosition() == 255)
+	{
+		printf ("STACK OVERFLOW!\nREACHED 255 (MAX FOR 1 BYTE)\nTry not pushing too much into the CPU stack?\nExiting engine...!\n");
+		throw 0;
+	}
+}
 
 PUSH::PUSH (uint64_t number)
 {
@@ -9,6 +17,7 @@ PUSH::PUSH (uint64_t number)
 
 void PUSH::Execute()
 {
+	StackCheck ();
 	engine->stack->Push(number);
 }
 
@@ -21,6 +30,7 @@ PUSHI::PUSHI (int64_t number)
 
 void PUSHI::Execute()
 {
+	StackCheck ();
 	engine->stack->Push(number);
 }
 
@@ -33,5 +43,6 @@ PUSHF::PUSHF (double number)
 
 void PUSHF::Execute()
 {
+	StackCheck ();
 	engine->stack->Push(number);
 }
