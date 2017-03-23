@@ -20,7 +20,7 @@ class Engine
 private:
 // Member variables
 	std::vector<Instruction*> instructions;
-	unsigned int line = 0;
+	uint32_t line = 0;
 
 // Member functions
 	bool	CheckRAM (); // Check if the ram module is initialized
@@ -38,5 +38,7 @@ public:
 	void	Execute (int lines);
 	void	InitializeRAM (unsigned long size);
 	void	InitializeRAM (Memory* memory);
-	size_t	GetInstructionsSize ();
+	void	SetLine (uint32_t line);
+	size_t		GetInstructionsSize ();
+	uint32_t	GetLineNumber ();
 };

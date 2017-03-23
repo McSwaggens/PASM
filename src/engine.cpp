@@ -89,7 +89,7 @@ void Engine::Load (std::string instructions)
 		}
 #endif
 		
-		Instruction* instruction = Parser::GetInstruction (parts);
+		Instruction* instruction = Parser::GetInstruction (parts, ln);
 		this->instructions[ln] = instruction;
 	}
 }
@@ -97,4 +97,14 @@ void Engine::Load (std::string instructions)
 size_t Engine::GetInstructionsSize ()
 {
 	return instructions.size ();
+}
+
+void Engine::SetLine (uint32_t line)
+{
+	this->line = line;
+}
+
+uint32_t Engine::GetLineNumber ()
+{
+	return this->line;
 }
