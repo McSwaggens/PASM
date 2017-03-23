@@ -35,6 +35,7 @@ public:
 	
 // Member functions
 	void	Load (std::string code);
+	void	Execute ();
 	void	Execute (int lines);
 	void	InitializeRAM (unsigned long size);
 	void	InitializeRAM (Memory* memory);

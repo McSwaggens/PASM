@@ -31,6 +31,27 @@ void Engine::InitializeRAM (Memory* memory)
 	this->memory = memory;
 }
 
+void Engine::Execute ()
+{
+	// Check if the ram module is initialize or not
+	// Engine should refuse the execute without a memory (ram) module initialized
+	if (!this->CheckRAM())
+	{	// Memory module has NOT been initialized
+		// Throw an error
+		std::cout 	<< "Cannot execute engine without a valid memory module initialized"
+					<< std::endl;
+		return;
+	}
+	else // Memory module HAS been initialized correctly
+	{
+		for (;this->line < instructions.size (); this->line++)
+		{
+			Instruction* instruction = this->instructions[this->line];
+			instruction->Execute ();
+		}
+	}
+}
+
 void Engine::Execute (int lines)
 {
 	// Check if the ram module is initialize or not
