@@ -166,7 +166,7 @@ Instruction* GetSetInstruction (Register targetRegister, std::vector<std::string
 	throw 0;
 }
 
-Instruction* Parser::GetInstruction (std::vector<std::string> parts)
+Instruction* Parser::GetInstruction (std::vector<std::string> parts, unsigned int current_line)
 {
 	
 	/*---- Stack ----*/
@@ -289,7 +289,7 @@ Instruction* Parser::GetInstruction (std::vector<std::string> parts)
 		uint64_t id;
 		if (IsHex(parts[1], id))
 		{
-			PT* pt = new PT (id);
+			PT* pt = new PT (id, current_line);
 			return pt;
 		}
 		else
@@ -300,6 +300,18 @@ Instruction* Parser::GetInstruction (std::vector<std::string> parts)
 	}
 	else if (parts[0] == "mov")
 	{
+		uint64_t point_id;
+		if (IsHex (parts[1], point_id))
+		{
+			MOV* mov = new MOV (point_id);
+			printf ("Added mov instruction!\n");
+			return mov;
+		}
+		else
+		{
+			printf ("SYNTAX ERROR: EXPECTED HEX NUMBER AFTER MOV INSTRUCTION [MOV]!\n");
+			throw 0;
+		}
 	}
 	else if (parts[0] == "call")
 	{
