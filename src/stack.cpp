@@ -13,6 +13,11 @@ Stack::Stack ()
 	}
 }
 
+unsigned char Stack::GetPosition ()
+{
+	return this->position;
+}
+
 bool Stack::IsStackOpen ()
 {
 	return position != MAX_SIZE;
