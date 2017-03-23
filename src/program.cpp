@@ -23,7 +23,7 @@ int main ()
 	engine->InitializeRAM (1000);
 
 	// Start the engine
-	engine->Execute (100);
+	engine->Execute ();
 	
 	engine->stack->PrintFl(10);
 	
