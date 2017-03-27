@@ -33,6 +33,8 @@ void Engine::InitializeRAM (Memory* memory)
 
 void Engine::Execute ()
 {
+	running = true;
+	
 	// Check if the ram module is initialize or not
 	// Engine should refuse the execute without a memory (ram) module initialized
 	if (!this->CheckRAM())
@@ -44,16 +46,20 @@ void Engine::Execute ()
 	}
 	else // Memory module HAS been initialized correctly
 	{
-		for (;this->line < instructions.size (); this->line++)
+		for (;this->line < instructions.size () && running; this->line++)
 		{
 			Instruction* instruction = this->instructions[this->line];
 			instruction->Execute ();
 		}
 	}
+	
+	running = false;
 }
 
 void Engine::Execute (int lines)
 {
+	running = true;
+	
 	// Check if the ram module is initialize or not
 	// Engine should refuse the execute without a memory (ram) module initialized
 	if (!this->CheckRAM())
@@ -65,14 +71,14 @@ void Engine::Execute (int lines)
 	}
 	else // Memory module HAS been initialized correctly
 	{
-		for (int i = 0; i < lines && this->line < instructions.size (); i++, this->line++)
+		for (int i = 0; i < lines && this->line < instructions.size () && running; i++, this->line++)
 		{
 			Instruction* instruction = this->instructions[this->line];
 			instruction->Execute ();
 		}
 	}
 	
-	
+	running = false;
 }
 
 // Check if the ram module has been initialized
@@ -128,4 +134,9 @@ void Engine::SetLine (uint32_t line)
 uint32_t Engine::GetLineNumber ()
 {
 	return this->line;
+}
+
+void Engine::StopEngineExecution ()
+{
+	this->running = false;
 }

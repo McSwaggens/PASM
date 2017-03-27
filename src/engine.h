@@ -8,6 +8,7 @@
 #include "parser.h"
 #include "globaldefines.h"
 #include "stack.h"
+#include "error.h"
 
 #define MAX_REGISTER_STACK_SIZE 255
 
@@ -21,6 +22,7 @@ private:
 // Member variables
 	std::vector<Instruction*> instructions;
 	uint32_t line = 0;
+	bool running = false;
 
 // Member functions
 	bool	CheckRAM (); // Check if the ram module is initialized
@@ -40,6 +42,7 @@ public:
 	void	InitializeRAM (unsigned long size);
 	void	InitializeRAM (Memory* memory);
 	void	SetLine (uint32_t line);
+	void	StopEngineExecution ();
 	size_t		GetInstructionsSize ();
 	uint32_t	GetLineNumber ();
 };

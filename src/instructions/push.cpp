@@ -5,8 +5,7 @@ void StackCheck ()
 {
 	if (engine->stack->GetPosition() == 255)
 	{
-		printf ("STACK OVERFLOW!\nREACHED 255 (MAX FOR 1 BYTE)\nTry not pushing too much into the CPU stack?\nExiting engine...!\n");
-		throw 0;
+		ERROR (STACK_OVERFLOW);
 	}
 }
 
