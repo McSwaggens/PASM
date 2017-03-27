@@ -1,8 +1,5 @@
 #pragma once
 
-#include <iostream>
-#include <string>
-#include <vector>
 #include "memory.h"
 #include "instruction.h"
 #include "parser.h"

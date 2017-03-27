@@ -19,9 +19,5 @@ void ThrowError (Error error, char* additional_information)
 	engine->StopEngineExecution ();
 }
 
-#define ED const Error
-
-ED STACK_OVERFLOW ("Stack Overflow", "An attempt to push a value into a full stack.");
-ED STACK_UNDERFLOW ("Stack Underflow", "Either there are no elements in the stack or the required amount of elements in the stack is not met by the current operation.");
-
-#undef ED
+const Error STACK_OVERFLOW ("Stack Overflow", "An attempt to push a value into a full stack.");
+const Error STACK_UNDERFLOW ("Stack Underflow", "Either there are no elements in the stack or the required amount of elements in the stack is not met by the current operation.");
