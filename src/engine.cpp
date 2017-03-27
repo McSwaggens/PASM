@@ -5,7 +5,7 @@ Engine::Engine ()
 	engine = this;
 }
 
-void Engine::InitializeRAM (unsigned long size)
+void Engine::InitializeRAM (uint64_t size)
 {
 	// Check if the current ram module is already initialized
 	if (this->memory)
@@ -89,7 +89,7 @@ bool Engine::CheckRAM ()
 
 void Engine::Load (std::string instructions)
 {
-	long instructionsLength = instructions.length();
+	size_t instructionsLength = instructions.length();
 
 #if SHOW_DEBUG_INFORMATION
 		std::cout << instructionsLength << " characters being loaded into engine" << std::endl;
@@ -104,7 +104,7 @@ void Engine::Load (std::string instructions)
 
 	this->instructions.resize (lines.size());
 
-	for (long ln = 0; ln < lines.size(); ln++)
+	for (size_t ln = 0; ln < lines.size(); ln++)
 	{
 		std::string currentLine = lines[ln];
 		std::vector<std::string> parts = Parser::SeperateSpaces (&currentLine);

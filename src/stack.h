@@ -11,8 +11,8 @@
 class Stack
 {
 private:
-	unsigned char stack[MAX_SIZE][MAX_BYTES];
-	unsigned char position;
+	uint8_t stack[MAX_SIZE][MAX_BYTES];
+	uint8_t position;
 	
 	bool IsStackOpen ();
 	
@@ -20,7 +20,7 @@ public:
 	
 	Stack ();
 	
-	unsigned char GetPosition ();
+	uint8_t GetPosition ();
 	
 	void Print (uint8_t size = MAX_SIZE);
 	void PrintFl (uint8_t size = MAX_SIZE);

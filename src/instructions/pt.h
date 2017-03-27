@@ -21,6 +21,6 @@ private:
 	uint32_t id;
 	
 public:
-	PT (uint32_t _id, unsigned int current_line);
+	PT (uint32_t _id, uint32_t current_line);
 	virtual void Execute();
 };

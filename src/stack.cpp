@@ -13,7 +13,7 @@ Stack::Stack ()
 	}
 }
 
-unsigned char Stack::GetPosition ()
+uint8_t Stack::GetPosition ()
 {
 	return this->position;
 }

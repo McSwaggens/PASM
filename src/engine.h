@@ -36,7 +36,7 @@ public:
 	void	Load (std::string code);
 	void	Execute ();
 	void	Execute (int lines);
-	void	InitializeRAM (unsigned long size);
+	void	InitializeRAM (uint64_t size);
 	void	InitializeRAM (Memory* memory);
 	void	SetLine (uint32_t line);
 	void	StopEngineExecution ();

@@ -22,7 +22,7 @@ uint32_t GetPoint (uint32_t _id)
 
 //
 
-PT::PT (uint32_t _id, unsigned int current_line)
+PT::PT (uint32_t _id, uint32_t current_line)
 {
 	this->id = _id;
 	points.push_back (PointPair (current_line, _id));

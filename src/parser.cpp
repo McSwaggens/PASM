@@ -4,7 +4,7 @@
 std::vector<std::string> Parser::SeperateLines (std::string* code)
 {
 	// Get the length of the entire string
-	long length = code->length();
+	size_t length = code->length();
 	
 	// Initialize our char array with a buffer
 	char charr[length];
@@ -18,7 +18,7 @@ std::vector<std::string> Parser::SeperateLines (std::string* code)
 	std::string currentLine;
 	
 	// Loop through all of the characters in the code string
-	for (long i = 0; i < length; i++)
+	for (size_t i = 0; i < length; i++)
 	{
 		char c = charr[i];
 		
@@ -140,7 +140,7 @@ bool IsRegister (std::string str, Register& _register)
 	
 	if (IsHex (c_num))
 	{
-		unsigned short int hex;
+		uint32_t hex;
 		hex = std::strtol (c_num, NULL, 16);
 		_register.id = hex;
 	}
@@ -166,7 +166,7 @@ Instruction* GetSetInstruction (Register targetRegister, std::vector<std::string
 	throw 0;
 }
 
-Instruction* Parser::GetInstruction (std::vector<std::string> parts, unsigned int current_line)
+Instruction* Parser::GetInstruction (std::vector<std::string> parts, uint32_t current_line)
 {
 	
 	/*---- Stack ----*/

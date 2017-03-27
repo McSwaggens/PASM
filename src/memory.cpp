@@ -20,7 +20,7 @@ Memory::Memory (ADDR size)
 }
 
 // Get a free block with the minimum required size
-MemoryBlock* Memory::GetFreeBlock (unsigned short minimumSize)
+MemoryBlock* Memory::GetFreeBlock (uint16_t minimumSize)
 {
 	for (int i = 0; i < freeBlocks.size(); i++)
 	{
@@ -114,7 +114,7 @@ char* Memory::Read (ADDR address, ADDR length)
 	char* data = new char[length];
 	
 	// Loop through the length of the data
-	for (unsigned int offset = 0; offset < length; offset++)
+	for (uint32_t offset = 0; offset < length; offset++)
 	{
 		// Add the byte of data into the buffer
 		data[offset] = this->data[address + offset];

@@ -5,8 +5,8 @@
 class SET_INT32 : public SET
 {
 private:
-	unsigned int number;
+	uint32_t number;
 public:
-	SET_INT32 (Register targetRegister, unsigned int number);
+	SET_INT32 (Register targetRegister, uint32_t number);
 	virtual void Execute();
 };

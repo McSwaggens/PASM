@@ -18,7 +18,7 @@ private:
 	std::vector<MemoryBlock*>	usedBlocks; 		// Array of memory blocks that are being used by one or more pointers
 	
 // Member functions
-	MemoryBlock* GetFreeBlock	(unsigned short minimumSize); // Get a free block with the minimum required size
+	MemoryBlock* GetFreeBlock	(uint16_t minimumSize); // Get a free block with the minimum required size
 	void	Stitch	(MemoryBlock* memoryBlock);
 	
 public:
@@ -47,7 +47,7 @@ struct MemoryBlock			// 7 Bytes total
 	{
 	}
 	
-	MemoryBlock (ADDR address, unsigned int size)
+	MemoryBlock (ADDR address, uint32_t size)
 	{
 		this->address = address;
 		this->size = size;
